@@ -22,3 +22,11 @@ repos:
     rev: "5.11.5"
     hooks:
       - id: isort
+
+  - repo: local
+    hooks:
+      - id: make-clean-notebooks
+        name: make-clean-notebooks
+        entry: make clean-notebooks
+        language: system
+        pass_filenames: false

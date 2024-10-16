@@ -2,7 +2,10 @@ name: edgewalker
 channels:
   - conda-forge
 dependencies:
-  - python=3.9
+  - python=3.6
   - pip
     - pre-commit
+    - ipykernel
+    - boto3
+    - aws-glue-sessions
     # Run make build!
