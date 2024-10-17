@@ -7,5 +7,8 @@ plan-dev:
 apply-dev:
 	terraform apply plan.tfout
 
+applynow-dev:
+	terraform apply -auto-approve
+
 destroy-dev:
 	terraform destroy
