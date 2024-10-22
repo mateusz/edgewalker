@@ -2,10 +2,9 @@ name: edgewalker
 channels:
   - conda-forge
 dependencies:
-  - python=3.6
+  # Note, python 3.9 used locally, but Glue jobs only supports 3.6.  Anyway,
+  # many of the libs are added for type hinting etc., so don't need to match
+  # exactly.
+  - python=3.9
   - pip
-    - pre-commit
-    - ipykernel
-    - boto3
-    - aws-glue-sessions
-    # Run make build!
+  - poetry

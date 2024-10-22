@@ -1,0 +1,5 @@
+[virtualenvs]
+# Set to false because we are using micromamba to manage the environment
+# locally. Poetry is not aware of it, so we need to tell it to prevent
+# additional virtualenv creation. Just reduces the mess really.
+create = false
