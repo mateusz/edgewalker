@@ -2,22 +2,32 @@
 
 Common crawl exploration.
 
-## Setup
+## Rough overview
+
+The goal is to load the website graph information for querying, and also once websites of interest have been identified, to be able to deeply analyse their content in bulk.
+
+![Overview](diagram.png)
+
+## Basic setup
 
 Install aws-vault and micromamba, then:
 
 ```
 micromamba create -n edgewalker -f environment.yml
 micromamba activate edgewalker
+poetry install
 make build
 ```
 
 Provision your access via aws-vault to the target account, then create infrastructure by:
 
-* Creating a bucket "edgewalker-dev-state-storage-us-east-1" unless already created
-* Cd to `terraform/accounts/edgewalker-dev/edgewalker-infra`
-* `aws-vault exec yourprofile -- terraform init -upgrade`
-* `aws-vault exec yourprofile -- terraform apply -auto-approve`
+```bash
+cd cdkinfra
+aws-vault exec gradient-dev --region us-east-1 -- cdk bootstrap -c stack=edgewalker -c environment=dev
+aws-vault exec gradient-dev --region us-east-1 -- cdk deploy -c stack=edgewalker -c environment=dev
+```
+
+## Interactive sessions
 
 Assuming you already have aws-vault set up, and profiles to match, add a profile for accessing Glue kernel by editing your `~/.aws/config` as follows.
 
